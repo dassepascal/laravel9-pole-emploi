@@ -109,6 +109,8 @@ class PosteController extends Controller
      */
     public function destroy(Poste $poste)
     {
-        //
+        $poste->delete();
+        //return back()->with('message', 'le poste a bien été supprimé !');
+        return redirect()->route('postes.index')->with('message', 'le poste a bien été supprimer');
     }
 }
