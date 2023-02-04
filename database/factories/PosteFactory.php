@@ -1,0 +1,27 @@
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Poste>
+ */
+class PosteFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        return [
+            'title'=>$this->faker->word(),
+            'description'=>$this->faker->text($maxNbChars = 200),
+            'experience'=>$this->faker->numberBetween($min = 0, $max = 5),
+            'diplome'=>$this->faker->sentence($nb=2),
+            'user_id'=>$this->faker->unique()->numberBetween($min =1, $max = 30),
+        ];
+    }
+}

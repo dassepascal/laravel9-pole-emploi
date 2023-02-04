@@ -1,0 +1,38 @@
+Componentes
+create un Componentesphp artisan make:component NewFirstComponent
+
+dans app\view\components
+<?php
+
+namespace App\View\Components;
+
+use Illuminate\View\Component;
+
+class NewFirstComponent extends Component
+{
+    /**
+     * Create a new component instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Get the view / contents that represent the component.
+     *
+     * @return \Illuminate\Contracts\View\View|\Closure|string
+     */
+    public function render()
+    {
+        return view('components.new-first-component');
+    }
+}
+
+1.creation du model poste
+2.database
+3.model
+
+pb Method Illuminate\Validation\Validator::validateRequied does not exist.
