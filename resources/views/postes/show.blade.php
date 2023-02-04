@@ -1,12 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        {{-- <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            @lang('Show a task')
-        </h2> --}}
-        <h2>Poste</h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            @lang('Show a poste')
+        </h2>
+
     </x-slot>
 
     <x-posts-card>
+
         <h3 class="font-semibold text-xl text-gray-800">@lang('Title')</h3>
         <p>{{ $poste->title }}</p>
         <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Description')</h3>
@@ -15,6 +16,10 @@
         <p>{{ $poste->experience }}</p>
         <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Diplôme')</h3>
         <p>{{ $poste->diplome }}</p>
+         {{-- to do creer la route qui correspond à id --}}
+        <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Enterprise')</h3>
+        <p><a href="#">{{ $poste->enterprise->name }}</a>
+            </p>
         <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Date creation')</h3>
         <p>{{ $poste->created_at->format('d/m/Y') }}</p>
         @if($poste->created_at != $poste->updated_at)

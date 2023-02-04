@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Poste;
+use App\Models\Enterprise;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -45,5 +46,8 @@ class User extends Authenticatable
 
     public function postes(){
         return $this->hasMany(Poste::class);
+    }
+    public function enterprises(){
+        return $this->hasMany(Enterprise::class);
     }
 }

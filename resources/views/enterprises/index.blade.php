@@ -1,9 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        {{-- <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            @Lang('Tasks List')
-        </h2> --}}
-        <h2> Poste</h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            @Lang('Enterprise List')
+        </h2>
+
     </x-slot>
     <div class="flex justify-center mx-auto">
         @if (session()->has('message'))
@@ -22,35 +22,27 @@
                     <table>
                         <thead class="bg-gray-50">
                             <tr>
-
-                                {{-- <th class="px-2 py-2 text-xs text-gray-500">@lang('Title')</th> --}}
-                                <th class="px-2 py-2 text-xs text-gray-500">Nom du poste</th>
                                 <th class="px-2 py-2 text-xs text-gray-500">Nom de l'entreprise</th>
-                                {{-- <th class="px-2 py-2 text-xs text-gray-500">Description</th>
-                                <th class="px-2 py-2 text-xs text-gray-500">Expérience</th>
-                                <th class="px-2 py-2 text-xs text-gray-500">Diplôme</th> --}}
+                                <th class="px-2 py-2 text-xs text-gray-500">Activité</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white">
-                            @foreach($postes as $poste)
+                            @foreach($enterprises as $enterprise)
                             <tr class="whitespace-nowrap">
-                                {{-- <td class="px-4 py-4 text-sm text-gray-500">{{ $poste->id }}</td> --}}
-                                <td class="px-4 py-4">{{ $poste->title }}</td>
-                                <td class="px-4 py-4">{{ $poste->enterprise->name }}</td>
-                                {{-- <td class="px-4 py-4">{{ $poste->description }}</td>
-                                <td class="px-4 py-4">{{ $poste->experience }}</td>
-                                <td class="px-4 py-4">{{ $poste->diplome }}</td> --}}
-                                <x-link-button href="{{ route('postes.show',$poste->id) }}">
+                                <td class="px-4 py-4">{{ $enterprise->name }}</td>
+                                <td class="px-4 py-4">{{ $enterprise->activity }}</td>
+
+                                <x-link-button href="{{ route('enterprises.show',$enterprise->id) }}">
                                     @lang('Show')
                                 </x-link-button>
-                                <x-link-button href="{{ route('postes.edit',$poste->id) }}">
+                                <x-link-button href="{{ route('enterprises.edit',$enterprise->id) }}">
                                     @lang('edit')
                                 </x-link-button>
                                 <x-link-button
-                                    onclick="event.preventDefault(); document.getElementById('destroy{{ $poste->id }}').submit();">
+                                    onclick="event.preventDefault(); document.getElementById('destroy{{ $enterprise->id }}').submit();">
                                     @lang('Delete')
                                 </x-link-button>
-                                <form id="destroy{{ $poste->id }}" action="{{ route('postes.destroy',$poste->id) }}"
+                                <form id="destroy{{ $enterprise->id }}" action="{{ route('enterprises.destroy',$enterprise->id) }}"
                                     method="POST" style="display: none;">
                                     @csrf
                                     @method('DELETE')

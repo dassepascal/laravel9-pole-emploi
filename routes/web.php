@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PosteController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EnterpriseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,4 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::resource('postes',PosteController::class)->middleware('auth');
+Route::resource('enterprises',EnterpriseController::class)->middleware('auth');

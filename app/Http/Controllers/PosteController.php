@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Poste;
+use App\Models\Enterprise;
 use Illuminate\Http\Request;
 use App\Http\Requests\PosteRequest;
 
@@ -16,9 +17,11 @@ class PosteController extends Controller
     public function index()
     {
         $postes = Poste::all();
-
+        $enterprises = Enterprise::all();
+        //dd($postes[1]->enterprise->name);
         return view('postes.index',[
             'postes'=>$postes,
+            'enterprises'=>$enterprises
         ]);
     }
 
@@ -64,7 +67,11 @@ class PosteController extends Controller
      */
     public function show(Poste $poste)
     {
-        return view('postes.show',compact('poste'));
+        //dd($poste);
+       
+        return view('postes.show',[
+            'poste'=>$poste,
+        ]);
     }
 
     /**

@@ -34,5 +34,26 @@ class NewFirstComponent extends Component
 1.creation du model poste
 2.database
 3.model
+4.factory
+5.seeder
+6.databaseSeeder
+
+
+
+
+Mise a jour de la bdd
+1. UserTableSeeder
+2.PosteTableSeeder
+
+
+gestion errors
 
 pb Method Illuminate\Validation\Validator::validateRequied does not exist.
+
+ error1 =>SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child
+ row: a foreign key constraint fails (`laravel9-pole-emploi`.`postes`,
+  CONSTRAINT `postes_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`))
+   (SQL: insert into `postes` (`title`, `description`, `experience`, `diplome`, `user_id`, `updated_at`, `created_at`)
+   values (soluta, Expedita dolore dolorem fuga cum. Laboriosam iure minima et modi similique autem quos. Praesentium ut esse nulla nesciunt aut laboriosam consequatur., 5, Vitae nam., 5, 2023-02-04 08:47:40, 2023-02-04 08:47:40))
+solution1 => creer un UserTableSeeder pour alimenter la bdd
+
