@@ -16,14 +16,14 @@ class PosteFactory extends Factory
      */
     public function definition()
     {
-        // to do resoudre pb de user_id 
+        // to do resoudre pb de user_id
         return [
             'title'=>$this->faker->word(),
             'description'=>$this->faker->text($maxNbChars = 200),
             'experience'=>$this->faker->numberBetween($min = 0, $max = 5),
             'diplome'=>$this->faker->sentence($nb=2),
             'user_id'=>$this->faker->unique()->numberBetween($min =1, $max = 30),
-            'enterprise_id'=>$this->faker->numberBetween($min =1, $max = 30),
+           
         ];
     }
 }
