@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,6 +15,7 @@ class PosteFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
     public function definition()
     {
         // to do resoudre pb de user_id
@@ -22,8 +24,8 @@ class PosteFactory extends Factory
             'description'=>$this->faker->text($maxNbChars = 200),
             'experience'=>$this->faker->numberBetween($min = 0, $max = 5),
             'diplome'=>$this->faker->sentence($nb=2),
-            'user_id'=>$this->faker->unique()->numberBetween($min =1, $max = 30),
-           'enterprise_id'=>$this->faker->numberBetween($min =1, $max = 30),
+            'user_id'=>User::factory()->create()->id,
+        //    'enterprise_id'=>$this->faker->numberBetween($min =1, $max = 30),
         ];
     }
 }

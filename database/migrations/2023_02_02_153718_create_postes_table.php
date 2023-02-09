@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('experience');
             $table->string('diplome');
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('enterprise_id')->constrained();
+            // $table->foreignId('enterprise_id')->constrained();
             $table->timestamps();
         });
     }

@@ -18,12 +18,12 @@ class PosteController extends Controller
     public function index()
     {
         $postes = Poste::all();
-        $enterprises = Enterprise::all();
+        // $enterprises = Enterprise::all();
         //dd($postes[1]->enterprise->name);
         return view('postes.index',[
             'postes'=>$postes,
             // 'postes'=>Poste::with('user')->latest()->get(),
-            'enterprises'=>$enterprises
+            // 'enterprises'=>$enterprises
         ]);
     }
 
@@ -54,7 +54,7 @@ class PosteController extends Controller
             'description'=>'required|max:255',
             'experience'=>'required|max:50',
             'diplome'=>'required|max:50',
-            'enterprise_id'=>Enterprise::all(),
+            // 'enterprise_id'=>Enterprise::all(),
 
         ]);
         // $poste = new Poste;

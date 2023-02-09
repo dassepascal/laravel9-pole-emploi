@@ -15,6 +15,6 @@ class PosteTableSeeder extends Seeder
      */
     public function run()
     {
-        Poste::factory(30)->create();
+        Poste::factory(10)->create();
     }
 }
