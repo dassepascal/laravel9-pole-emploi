@@ -15,7 +15,9 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = Contact::all();
-        return view('contacts.index', compact('contacts'));
+        return view('contacts.index', [
+            'contacts'=>$contacts,
+        ]);
     }
 
     /**
@@ -36,15 +38,24 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name'=>'required|max:50',
-            'firstName'=>'required|max:50',
-            'phone'=>'required|max:50',
-            'email'=>'required|max:50',
-            'jobTitle'=>'required|max:50',
-        ]);
-        $request->user()->contacts()->create($validated);
-        return back()->with('message',' le contact a bien été crée !');
+        // $validated = $request->validate([
+        //     'name'=>'required|max:50',
+        //     'firstName'=>'required|max:50',
+        //     'phone'=>'required|max:50',
+        //     'email'=>'required|max:50',
+        //     'jobTitle'=>'required|max:50',
+        // ]);
+        $contact = new Contact();
+        $contact->name=$request->name;
+        $contact->firstName = $request->firstName;
+        $contact->phone = $request->phone;
+        $contact->email = $request->email;
+        $contact->jobTitle = $request->jobTitle;
+
+        $contact->save();
+        // $request->user()->contacts()->create($validated);
+
+        return back()->with('message', ' le contact a bien été crée !');
     }
 
     /**
