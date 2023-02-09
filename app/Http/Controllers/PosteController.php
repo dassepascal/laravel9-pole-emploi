@@ -33,7 +33,7 @@ class PosteController extends Controller
     public function create()
     {
         $postes = Poste::all();
-        dd($postes);
+
         return view('postes.create',[
             'postes'=>$postes,
         ]);
@@ -47,19 +47,21 @@ class PosteController extends Controller
      */
     public function store(Request $request)
     {
-          $validated = $request->validate([
-            'title'=>'required|max:100',
-            'description'=>'required|max:255',
-            'experience'=>'required|max:50',
-            'diplome'=>'required|max:50',
-        ]);
-        // $poste = new Poste;
-        // $poste->title=$request->title;
-        // $poste->description = $request->description;
-        // $poste->experience = $request->experience;
-        // $poste->diplome = $request->diplome;
-        // $poste->save();
-        $request->user()->postes()->create($validated);
+        //   $validated = $request->validate([
+        //     'title'=>'required|max:100',
+        //     'description'=>'required|max:255',
+        //     'experience'=>'required|max:50',
+        //     'diplome'=>'required|max:50',
+        //     'enterprise_id'=>[1],
+        // ]);
+        $poste = new Poste;
+        $poste->title=$request->title;
+        $poste->description = $request->description;
+        $poste->experience = $request->experience;
+        $poste->diplome = $request->diplome;
+        $poste->enterprise_id = $request->enterprise_id;
+        $poste->save();
+        // $request->user()->postes()->create();
         return back()->with('message',' le poste a bien été crée !');
     }
 
