@@ -33,6 +33,7 @@ class PosteController extends Controller
     public function create()
     {
         $postes = Poste::all();
+        dd($postes);
         return view('postes.create',[
             'postes'=>$postes,
         ]);
