@@ -28,6 +28,7 @@ class PosteRequest extends FormRequest
             'description'=>'required|max:255',
             'experience'=>'required|max:50',
             'diplome'=>'requied|max:50',
+            'enterprise_id'=>'required',
         ];
     }
 }
