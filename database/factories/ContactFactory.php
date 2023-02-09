@@ -21,7 +21,7 @@ class ContactFactory extends Factory
             'firstName'=>$this->faker->firstName('male'|'female'),
             'phone'=>$this->faker->phoneNumber(),
             'email'=>$this->faker->email(),
-            'poste'=>$this->faker->jobTitle(),
+            'jobTitle'=>$this->faker->jobTitle(),
         ];
     }
 }
