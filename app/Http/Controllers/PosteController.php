@@ -20,7 +20,7 @@ class PosteController extends Controller
         $enterprises = Enterprise::all();
         //dd($postes[1]->enterprise->name);
         return view('postes.index',[
-            'postes'=>$postes,
+            'postes'=>Poste::with('user')->latest()->get(),
             'enterprises'=>$enterprises
         ]);
     }
@@ -60,6 +60,7 @@ class PosteController extends Controller
         $poste->experience = $request->experience;
         $poste->diplome = $request->diplome;
         $poste->enterprise_id = $request->enterprise_id;
+        $poste->user_id = $request->user()->postes();
         $poste->save();
         // $request->user()->postes()->create();
         return back()->with('message',' le poste a bien été crée !');

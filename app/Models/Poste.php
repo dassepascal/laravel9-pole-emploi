@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Poste extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','description','experience','diplome'];
+    protected $fillable = ['title','description','experience','diplome','enterprise_id'];
 
     public function enterprise()
     {

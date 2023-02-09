@@ -47,7 +47,7 @@ class User extends Authenticatable
     public function postes(){
         return $this->hasMany(Poste::class);
     }
-    public function enterprises(){
-        return $this->hasMany(Enterprise::class);
-    }
+    // public function enterprises(){
+    //     return $this->hasMany(Enterprise::class);
+    // }
 }
