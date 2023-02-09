@@ -24,40 +24,41 @@
             <!-- Titre -->
             <div>
                 <x-label for="title" :value="__('Title')" />
-
-                <x-input id="title" class="block mt-1 w-full" type="text" name="title"
-                    :value="old('title')" required autofocus />
+                <x-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required
+                    autofocus />
             </div>
-
             <!-- Description -->
             <div class="mt-4">
                 <x-label for="description" :value="__('Description')" />
-
-                <x-textarea class="block mt-1 w-full" id="description" name="description">{{ old('description') }}</x-textarea>
+                <x-textarea class="block mt-1 w-full" id="description" name="description">{{ old('description') }}
+                </x-textarea>
             </div>
             {{-- Experience --}}
-            <div class="mt-4">
-                <x-label for="experience" :value="__('Experience')" />
-
-                <x-input class="block mt-1 w-full"  name="experience" id="experience" type="text"
-                :value="old('experience')" required autofocus />
-
-            </div>
+            <label for="experience" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
+                an option</label>
+            <select name="experience"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>Choose a experience</option>
+                @foreach ($postes as $poste )
+                <option value="{{ $poste->experience }}">{{ $poste->experience }}</option>
+                @endforeach
+            </select>
+            
             {{-- Diplome --}}
-            <div class="mt-4">
-                <x-label for="diplome" :value="__('Diplôme')" />
-                <x-input class="block mt-1 w-full"  name="diplome" id="diplome" type="text"
-                :value="old('diplome')" required autofocus />
-
-            </div>
-
-
+            <label for="diplome" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
+                an option</label>
+            <select name="diplome"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>Choose a diplome</option>
+                @foreach ($postes as $poste )
+                <option value="{{ $poste->diplome }}">{{ $poste->diplome }}</option>
+                @endforeach
+            </select>
             <div class="flex items-center justify-end mt-4">
                 <x-button class="ml-3">
                     {{ __('Send') }}
                 </x-button>
             </div>
         </form>
-
     </x-posts-card>
 </x-app-layout>

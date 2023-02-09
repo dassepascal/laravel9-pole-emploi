@@ -32,7 +32,10 @@ class PosteController extends Controller
      */
     public function create()
     {
-        return view('postes.create');
+        $postes = Poste::all();
+        return view('postes.create',[
+            'postes'=>$postes,
+        ]);
     }
 
     /**
@@ -68,7 +71,7 @@ class PosteController extends Controller
     public function show(Poste $poste)
     {
         //dd($poste);
-       
+
         return view('postes.show',[
             'poste'=>$poste,
         ]);

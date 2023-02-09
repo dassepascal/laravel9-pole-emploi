@@ -14,7 +14,10 @@
         <p>{{ $poste->description }}</p>
         <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Experience')</h3>
         <p>{{ $poste->experience }}</p>
+
+        
         <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Diplôme')</h3>
+
         <p>{{ $poste->diplome }}</p>
          {{-- to do creer la route qui correspond à id --}}
         {{-- <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Enterprise')</h3>
