@@ -36,7 +36,15 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name'=>'required|max:50',
+            'firstName'=>'required|max:50',
+            'phone'=>'required|max:50',
+            'email'=>'required|max:50',
+            'jobTitle'=>'required|max:50',
+        ]);
+        $request->user()->contacts()->create($validated);
+        return back()->with('message',' le contact a bien été crée !');
     }
 
     /**
