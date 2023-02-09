@@ -54,7 +54,7 @@ class PosteController extends Controller
             'description'=>'required|max:255',
             'experience'=>'required|max:50',
             'diplome'=>'required|max:50',
-            'enterprise_id'=>enterprise::all(),
+            'enterprise_id'=>Enterprise::all(),
 
         ]);
         // $poste = new Poste;
