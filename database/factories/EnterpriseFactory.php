@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,7 +23,7 @@ class EnterpriseFactory extends Factory
             'phone'=>$this->faker->phoneNumber(),
             'address'=>$this->faker->address(),
             'site'=>$this->faker->url(),
-            'user_id'=>$this->faker->unique()->numberBetween($min =1, $max = 30),
+            'user_id'=>User::factory()->create()->id,
         ];
     }
 }

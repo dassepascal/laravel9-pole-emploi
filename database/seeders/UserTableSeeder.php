@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Poste;
+use App\Models\Enterprise;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -20,12 +21,12 @@ class UserTableSeeder extends Seeder
         User::factory(2)->create()->each(function($user) {
             $user->postes()->saveMany(Poste::factory(10))->create([
                 'user_id' => $user->id,
-                
-
             ]);
-            // $enterprise->postes()->saveMany(Poste::factory(10)->create([
-            //     'enterprise_id'=>$poste->id,
-            // ]));
+            $user->enterprises()->saveMany(Enterprise::factory(10)->create([
+                'user_id'=>$user->id,
+            ]));
+
         });
+
     }
 }
