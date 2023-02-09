@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Poste;
 use App\Models\Enterprise;
 use Illuminate\Http\Request;
@@ -18,12 +19,12 @@ class PosteController extends Controller
     public function index()
     {
         $postes = Poste::all();
-        // $enterprises = Enterprise::all();
+        //$enterprises = Enterprise::all();
         //dd($postes[1]->enterprise->name);
-        return view('postes.index',[
-            'postes'=>$postes,
-            // 'postes'=>Poste::with('user')->latest()->get(),
-            // 'enterprises'=>$enterprises
+        return view('postes.index', [
+            'postes'=>$postes
+            //  'postes'=>Poste::with('user')->latest()->get(),
+             //'enterprises'=>$enterprises
         ]);
     }
 
@@ -34,10 +35,10 @@ class PosteController extends Controller
      */
     public function create()
     {
-        $postes = Poste::all();
 
+$postes=Poste::all();
         return view('postes.create',[
-            'postes'=>$postes,
+            'postes'=>$postes
         ]);
     }
 
@@ -49,24 +50,25 @@ class PosteController extends Controller
      */
     public function store(Request $request)
     {
-          $validated = $request->validate([
-            'title'=>'required|max:100',
-            'description'=>'required|max:255',
-            'experience'=>'required|max:50',
-            'diplome'=>'required|max:50',
-            // 'enterprise_id'=>Enterprise::all(),
+        $validated = $request->validate([
+          'title'=>'required|max:100',
+          'description'=>'required|max:255',
+          'experience'=>'required|max:50',
+          'diplome'=>'required|max:50',
+        //  'user_id'=> User::all(),
+          // 'enterprise_id'=>Enterprise::all(),
 
-        ]);
+         ]);
         // $poste = new Poste;
         // $poste->title=$request->title;
         // $poste->description = $request->description;
         // $poste->experience = $request->experience;
         // $poste->diplome = $request->diplome;
-        // $poste->enterprise_id = $request->enterprise_id;
-        // $poste->user_id = $request->user()->postes();
+        //  $poste->enterprise_id = $request->enterprise_id;
+        // $poste->user_id = $request->user_id;
         // $poste->save();
         $request->user()->postes()->create($validated);
-        return back()->with('message',' le poste a bien été crée !');
+        return back()->with('message', ' le poste a bien été crée !');
     }
 
     /**
@@ -79,7 +81,7 @@ class PosteController extends Controller
     {
         //dd($poste);
 
-        return view('postes.show',[
+        return view('postes.show', [
             'poste'=>$poste,
         ]);
     }
@@ -92,7 +94,7 @@ class PosteController extends Controller
      */
     public function edit(Poste $poste)
     {
-        return view('postes.edit',compact('poste') );
+        return view('postes.edit', compact('poste'));
     }
 
     /**
@@ -115,7 +117,7 @@ class PosteController extends Controller
         $poste->experience = $request->experience;
         $poste->diplome = $request->diplome;
         $poste->save();
-        return back()->with('message',' le poste a bien été mis à jour !');
+        return back()->with('message', ' le poste a bien été mis à jour !');
     }
 
     /**

@@ -9,8 +9,8 @@ class Enterprise extends Model
 {
     use HasFactory;
     protected $fillable = ['name','activity', 'phone','address','site'];
-    public function postes()
-    {
-        return $this->hasMany(Poste::class);
-    }
+    // public function postes()
+    // {
+    //     return $this->hasMany(Poste::class);
+    // }
 }
