@@ -6,6 +6,7 @@ use App\Models\Poste;
 use App\Models\Enterprise;
 use Illuminate\Http\Request;
 use App\Http\Requests\PosteRequest;
+use Illuminate\Support\Facades\Validator;
 
 class PosteController extends Controller
 {
@@ -20,7 +21,8 @@ class PosteController extends Controller
         $enterprises = Enterprise::all();
         //dd($postes[1]->enterprise->name);
         return view('postes.index',[
-            'postes'=>Poste::with('user')->latest()->get(),
+            'postes'=>$postes,
+            // 'postes'=>Poste::with('user')->latest()->get(),
             'enterprises'=>$enterprises
         ]);
     }
@@ -47,22 +49,23 @@ class PosteController extends Controller
      */
     public function store(Request $request)
     {
-        //   $validated = $request->validate([
-        //     'title'=>'required|max:100',
-        //     'description'=>'required|max:255',
-        //     'experience'=>'required|max:50',
-        //     'diplome'=>'required|max:50',
-        //     'enterprise_id'=>[1],
-        // ]);
-        $poste = new Poste;
-        $poste->title=$request->title;
-        $poste->description = $request->description;
-        $poste->experience = $request->experience;
-        $poste->diplome = $request->diplome;
-        $poste->enterprise_id = $request->enterprise_id;
-        $poste->user_id = $request->user()->postes();
-        $poste->save();
-        // $request->user()->postes()->create();
+          $validated = $request->validate([
+            'title'=>'required|max:100',
+            'description'=>'required|max:255',
+            'experience'=>'required|max:50',
+            'diplome'=>'required|max:50',
+            'enterprise_id'=>enterprise::all(),
+
+        ]);
+        // $poste = new Poste;
+        // $poste->title=$request->title;
+        // $poste->description = $request->description;
+        // $poste->experience = $request->experience;
+        // $poste->diplome = $request->diplome;
+        // $poste->enterprise_id = $request->enterprise_id;
+        // $poste->user_id = $request->user()->postes();
+        // $poste->save();
+        $request->user()->postes()->create($validated);
         return back()->with('message',' le poste a bien été crée !');
     }
 
