@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Poste;
+use App\Models\Contact;
 use App\Models\Enterprise;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,6 +24,9 @@ class UserTableSeeder extends Seeder
                 'user_id' => $user->id,
             ]);
             $user->enterprises()->saveMany(Enterprise::factory(10)->create([
+                'user_id'=>$user->id,
+            ]));
+            $user->contacts()->saveMany(Contact::factory(10)->create([
                 'user_id'=>$user->id,
             ]));
 

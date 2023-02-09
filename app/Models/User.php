@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Poste;
+use App\Models\Contact;
 use App\Models\Enterprise;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -49,5 +50,8 @@ class User extends Authenticatable
     }
     public function enterprises(){
         return $this->hasMany(Enterprise::class);
+    }
+    public function contacts(){
+        return $this->hasMany(Contact::class);
     }
 }
