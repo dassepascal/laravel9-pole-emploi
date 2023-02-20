@@ -19,12 +19,12 @@ class PosteController extends Controller
     public function index()
     {
         $postes = Poste::all();
-        //$enterprises = Enterprise::all();
-        //dd($postes[1]->enterprise->name);
+        $enterprises = Enterprise::all();
+        //dd($postes[0]->enterprise_id);
         return view('postes.index', [
-            'postes'=>$postes
+            'postes'=>$postes,
             //  'postes'=>Poste::with('user')->latest()->get(),
-             //'enterprises'=>$enterprises
+             'enterprises'=>$enterprises
         ]);
     }
 
