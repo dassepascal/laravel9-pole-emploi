@@ -36,7 +36,7 @@
                                     @lang('Show')
                                 </x-link-button>
                                 <x-link-button href="{{ route('enterprises.edit',$enterprise->id) }}">
-                                    @lang('edit')
+                                    @lang('Edit')
                                 </x-link-button>
                                 <x-link-button
                                     onclick="event.preventDefault(); document.getElementById('destroy{{ $enterprise->id }}').submit();">

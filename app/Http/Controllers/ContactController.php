@@ -77,7 +77,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        return view('contacts.edit', compact('contact'));
     }
 
     /**
@@ -89,7 +89,13 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $contact->name = $request->name;
+        $contact->firstName = $request->firstName;
+        $contact->phone = $request->phone;
+        $contact->email = $request->email;
+        $contact->jobTitle = $request->jobTitle;
+        $contact->save();
+        return back()->with('message', ' le contact a bien été modifié !');
     }
 
     /**
@@ -100,6 +106,7 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        return back()->with('message', ' le contact a bien été supprimé !');
     }
 }

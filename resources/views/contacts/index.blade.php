@@ -43,18 +43,18 @@
                                  <x-link-button href="{{ route('contacts.show',$contact->id) }}">
                                     @lang('Show')
                                 </x-link-button>
-                               {{-- <x-link-buttonhref="route('postes.edit',$contact->id)
-                                    @lang('edit')
+                               <x-link-button href="{{ route('contacts.edit',$contact->id) }}">
+                                    @lang('Edit')
                                 </x-link-button>
                                 <x-link-button
                                     onclick="event.preventDefault(); document.getElementById('destroy{{ $contact->id }}').submit();">
                                     @lang('Delete')
                                 </x-link-button>
-                                <form id="destroy{{ $contact->id }}" action="{{ route('postes.destroy',$contact->id) }}"
+                                <form id="destroy{{ $contact->id }}" action="{{ route('contacts.destroy',$contact->id) }}"
                                     method="POST" style="display: none;">
                                     @csrf
                                     @method('DELETE')
-                                </form> --}}
+                                </form>
                             </tr>
                             @endforeach
                         </tbody>
