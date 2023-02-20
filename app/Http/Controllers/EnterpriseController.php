@@ -15,7 +15,7 @@ class EnterpriseController extends Controller
     public function index()
     {
         $enterprises = Enterprise::all();
-        
+
         return view('enterprises.index',[
             'enterprises'=> $enterprises
         ]);
@@ -45,12 +45,9 @@ class EnterpriseController extends Controller
             'phone'=>'required|max:50',
             'address'=>'required|max:150',
             'site'=>'required|max:150',
-
-
         ]);
-
-       $request->user()->enterprises()->create($validated);
-       return back()->with('message'," l'entreprise a bien été crée !");
+        $request->user()->enterprises()->create($validated);
+        return back()->with('message'," l'entreprise a bien été crée !");
     }
 
     /**
@@ -72,7 +69,7 @@ class EnterpriseController extends Controller
      */
     public function edit(Enterprise $enterprise)
     {
-        //
+        return view('enterprises.edit',compact('enterprise'));
     }
 
     /**
@@ -84,7 +81,15 @@ class EnterpriseController extends Controller
      */
     public function update(Request $request, Enterprise $enterprise)
     {
-        //
+        $validated = $request->validate([
+            'name'=>'required|max:50',
+            'activity'=>'required|max:50',
+            'phone'=>'required|max:50',
+            'address'=>'required|max:150',
+            'site'=>'required|max:150',
+        ]);
+        $enterprise->update($validated);
+        return redirect()->route('enterprises.index')->with('message', 'l\'entreprise a bien été modifiée !');
     }
 
     /**
@@ -95,6 +100,7 @@ class EnterpriseController extends Controller
      */
     public function destroy(Enterprise $enterprise)
     {
-        //
+        $enterprise->delete();
+        return redirect()->route('enterprises.index')->with('message', 'l\'entreprise a bien été supprimée !');
     }
 }

@@ -40,10 +40,10 @@
                                 {{-- <td class="px-4 py-4">{{ $contact->description }}</td>
                                 <td class="px-4 py-4">{{ $contact->experience }}</td>
                                 <td class="px-4 py-4">{{ $contact->diplome }}</td> --}}
-                                {{-- <x-link-button href="{{ route('postes.show',$contact->id) }}">
+                                 <x-link-button href="{{ route('contacts.show',$contact->id) }}">
                                     @lang('Show')
                                 </x-link-button>
-                                <x-link-button href="{{ route('postes.edit',$contact->id) }}">
+                               {{-- <x-link-buttonhref="route('postes.edit',$contact->id)
                                     @lang('edit')
                                 </x-link-button>
                                 <x-link-button
