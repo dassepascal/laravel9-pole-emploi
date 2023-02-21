@@ -14,12 +14,10 @@ class EnterpriseController extends Controller
      */
     public function index()
     {
-        $enterprises = Enterprise::all();
 
-        return view('enterprises.index',[
-            'enterprises'=> $enterprises
-        ]);
+        return view('enterprises.index');
     }
+
 
     /**
      * Show the form for creating a new resource.

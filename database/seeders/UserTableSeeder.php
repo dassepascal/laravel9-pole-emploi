@@ -20,12 +20,14 @@ class UserTableSeeder extends Seeder
     {
         // User::factory(30)->create();
         User::factory(2)->create()->each(function($user) {
-            $user->postes()->saveMany(Poste::factory(10))->create([
-                'user_id' => $user->id,
-            ]);
+
             $user->enterprises()->saveMany(Enterprise::factory(10)->create([
                 'user_id'=>$user->id,
             ]));
+            $user->postes()->saveMany(Poste::factory(10))->create([
+                'user_id' => $user->id,
+              //  'enterprise_id' => $user->enterprises()->id,
+            ]);
             $user->contacts()->saveMany(Contact::factory(10)->create([
                 'user_id'=>$user->id,
             ]));
