@@ -89,6 +89,7 @@ class PosteController extends Controller
         return view('postes.edit', [
             'poste'=>$poste,
             'enterprises'=>Enterprise::all(),
+            'postes'=>Poste::all(),
         ]);
 
 
