@@ -19,12 +19,12 @@ class PosteController extends Controller
     public function index()
     {
         $postes = Poste::all();
-        //$enterprises = Enterprise::all();
-        //dd($postes[1]->enterprise->name);
+        $enterprises = Enterprise::all();
+
         return view('postes.index', [
-            'postes'=>$postes
+            'postes'=>$postes,
             //  'postes'=>Poste::with('user')->latest()->get(),
-             //'enterprises'=>$enterprises
+             'enterprises'=>$enterprises
         ]);
     }
 
@@ -37,7 +37,8 @@ class PosteController extends Controller
     {
         $postes=Poste::all();
         return view('postes.create', [
-            'postes'=>$postes
+            'postes'=>$postes,
+            'enterprises'=>Enterprise::all(),
         ]);
     }
 
@@ -49,11 +50,13 @@ class PosteController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $validated = $request->validate([
             'title'=>'required|max:100',
             'description'=>'required|max:255',
             'experience'=>'required|max:50',
             'diplome'=>'required|max:50',
+            'enterprise_id'=>'required',
             ]);
         $request->user()->postes()->create($validated);
         return back()->with('message', ' le poste a bien été crée !');
@@ -71,6 +74,7 @@ class PosteController extends Controller
 
         return view('postes.show', [
             'poste'=>$poste,
+            'enterprises'=>Enterprise::all(),
         ]);
     }
 
@@ -82,7 +86,12 @@ class PosteController extends Controller
      */
     public function edit(Poste $poste)
     {
-        return view('postes.edit', compact('poste'));
+        return view('postes.edit', [
+            'poste'=>$poste,
+            'enterprises'=>Enterprise::all(),
+        ]);
+
+
     }
 
     /**
