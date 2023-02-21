@@ -25,7 +25,7 @@ class PosteFactory extends Factory
             'experience'=>$this->faker->numberBetween($min = 0, $max = 5),
             'diplome'=>$this->faker->sentence($nb=2),
             'user_id'=>User::factory()->create()->id,
-           'enterprise_id'=>$this->faker->numberBetween($min =1, $max = 30),
+           //'enterprise_id'=>$this->faker->numberBetween($min =1, $max = 30),
         ];
     }
 }

@@ -19,6 +19,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         // User::factory(30)->create();
+        
         User::factory(2)->create()->each(function($user) {
 
             $user->enterprises()->saveMany(Enterprise::factory(10)->create([
@@ -26,7 +27,7 @@ class UserTableSeeder extends Seeder
             ]));
             $user->postes()->saveMany(Poste::factory(10))->create([
                 'user_id' => $user->id,
-              //  'enterprise_id' => $user->enterprises()->id,
+                'enterprise_id' => rand(1, 10),
             ]);
             $user->contacts()->saveMany(Contact::factory(10)->create([
                 'user_id'=>$user->id,

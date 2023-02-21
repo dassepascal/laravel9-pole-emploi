@@ -14,8 +14,8 @@ class EnterpriseController extends Controller
      */
     public function index()
     {
-
-        return view('enterprises.index');
+        $enterprises = Enterprise::all();
+        return view('enterprises.index', compact('enterprises'));
     }
 
 
@@ -45,7 +45,7 @@ class EnterpriseController extends Controller
             'site'=>'required|max:150',
         ]);
         $request->user()->enterprises()->create($validated);
-        return back()->with('message'," l'entreprise a bien été crée !");
+        return back()->with('message', " l'entreprise a bien été crée !");
     }
 
     /**
@@ -56,7 +56,7 @@ class EnterpriseController extends Controller
      */
     public function show(Enterprise $enterprise)
     {
-        return view('enterprises.show',compact('enterprise'));
+        return view('enterprises.show', compact('enterprise'));
     }
 
     /**
@@ -67,7 +67,7 @@ class EnterpriseController extends Controller
      */
     public function edit(Enterprise $enterprise)
     {
-        return view('enterprises.edit',compact('enterprise'));
+        return view('enterprises.edit', compact('enterprise'));
     }
 
     /**
