@@ -22,11 +22,6 @@ class PosteController extends Controller
     {
         $postes = Poste::all();
         $enterprises = Enterprise::all();
-<<<<<<< HEAD
-        //dd($postes[0]->enterprise_id);
-=======
-
->>>>>>> code4
         return view('postes.index', [
             'postes'=>$postes,
             //  'postes'=>Poste::with('user')->latest()->get(),

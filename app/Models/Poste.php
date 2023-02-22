@@ -11,16 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Poste extends Model
 {
     use HasFactory;
-<<<<<<< HEAD
-    protected $fillable = ['title','description','experience','diplome'];
-
-    public function enterprise()
-    {
-        return $this->belongsTo((Enterprise::class));
-    }
-=======
     protected $fillable = ['title','description','experience_id','diplome_id','enterprise_id'];
->>>>>>> code4
 
     public function enterprise()
     {
