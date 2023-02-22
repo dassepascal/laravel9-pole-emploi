@@ -17,13 +17,14 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->string('experience');
+            //$table->string('experience');
 
             $table->string('diplome');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('enterprise_id')->constrained()->nullable();
 
-           
+           //$table->foreignId('contact_id')->constrained()->nullable();
+           $table->foreignId('experience_id')->constrained()->nullable();
             $table->timestamps();
         });
     }

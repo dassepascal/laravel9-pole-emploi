@@ -40,6 +40,7 @@ class PosteController extends Controller
         return view('postes.create', [
             'postes'=>$postes,
             'enterprises'=>Enterprise::all(),
+            'experiences'=>Experience::all(),
         ]);
     }
 
