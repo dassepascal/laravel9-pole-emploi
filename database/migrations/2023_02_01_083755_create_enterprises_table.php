@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('site');
             $table->string('slug')->nullable();
             $table->string('user_id')->constrained()->cascadeOnDelete();
+           // $table->foreignId('contact_id')->constrained()->nullable();
             $table->timestamps();
         });
     }

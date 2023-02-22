@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('diplome');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('enterprise_id')->constrained()->nullable();
+
+           
             $table->timestamps();
         });
     }

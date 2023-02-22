@@ -25,8 +25,9 @@ class UserTableSeeder extends Seeder
 
             $user->enterprises()->saveMany(Enterprise::factory(10)->create([
                 'user_id'=>$user->id,
+                //'contact_id'=>rand(1, 30),
             ]));
-            $postes = Poste::all();
+            //$postes = Poste::all();
             $user->postes()->saveMany(Poste::factory(10))->create([
                 // 'title'=>$postes->title,
                 // 'description'=>$postes->description,
@@ -34,9 +35,9 @@ class UserTableSeeder extends Seeder
                 // 'experience_id' => rand(1, 6),
                 'enterprise_id' => rand(1, 10),
             ]);
-            $user->contacts()->saveMany(Contact::factory(10)->create([
-                'user_id'=>$user->id,
-            ]));
+            // $user->contacts()->saveMany(Contact::factory(10)->create([
+            //     'user_id'=>$user->id,
+            // ]));
 
         });
 

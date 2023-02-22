@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Enterprise;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -26,7 +27,7 @@ class PosteFactory extends Factory
             'experience'=>$this->faker->randomElement(['0 an', '1 ans', '2 ans', '3 ans', '4 ans', '5 ans']),
             'diplome'=>$this->faker->randomElement(['Bac', 'Bac+2', 'Bac+3', 'Bac+4', 'Bac+5', 'Bac+6']),
             'user_id'=>User::factory()->create()->id,
-           'enterprise_id'=>$this->faker->numberBetween($min =1, $max = 30),
+           'enterprise_id'=>Enterprise::inRanDomOrder()->first()->id,
          ];
     }
 }
