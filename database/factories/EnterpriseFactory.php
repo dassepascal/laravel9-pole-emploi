@@ -24,6 +24,7 @@ class EnterpriseFactory extends Factory
             'address'=>$this->faker->address(),
             'site'=>$this->faker->url(),
             'user_id'=>User::factory()->create()->id,
+            //'contact_id'=>$this->faker->numberBetween($min =1, $max = 30),
         ];
     }
 }

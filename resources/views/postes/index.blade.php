@@ -23,7 +23,10 @@
                         <thead class="bg-gray-50">
                             <tr>
 
+<<<<<<< HEAD
                                 {{-- <th class="px-2 py-2 text-xs text-gray-500">@lang('Title')</th> --}}
+=======
+>>>>>>> code4
                                 <th class="px-2 py-2 text-xs text-gray-500">Id</th>
                                 <th class="px-2 py-2 text-xs text-gray-500">Nom du poste</th>
                                 <th class="px-2 py-2 text-xs text-gray-500">Nom de l'entreprise</th>
@@ -34,10 +37,15 @@
                         </thead>
                         <tbody class="bg-white">
                             @foreach($postes as $poste)
+<<<<<<< HEAD
                            {{-- @dump($poste->enterprise->name) --}}
+=======
+
+>>>>>>> code4
                             <tr class="whitespace-nowrap">
                                 <td class="px-4 py-4 text-sm text-gray-500">{{ $poste->id }}</td>
                                 <td class="px-4 py-4">{{ $poste->title }}</td>
+                                <td class="px-4 py-4">{{ $poste->enterprise->name }}</td>
 
                                 {{-- <td class="px-4 py-4">{{ $poste->entreprise->name }}</td>  --}}
 

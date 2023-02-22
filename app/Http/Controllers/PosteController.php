@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Poste;
 use App\Models\Enterprise;
+use App\Models\Experience;
 use Illuminate\Http\Request;
 use App\Http\Requests\PosteRequest;
+use App\Models\Diplome;
 use Illuminate\Support\Facades\Validator;
 
 class PosteController extends Controller
@@ -20,7 +22,11 @@ class PosteController extends Controller
     {
         $postes = Poste::all();
         $enterprises = Enterprise::all();
+<<<<<<< HEAD
         //dd($postes[0]->enterprise_id);
+=======
+
+>>>>>>> code4
         return view('postes.index', [
             'postes'=>$postes,
             //  'postes'=>Poste::with('user')->latest()->get(),
@@ -35,9 +41,14 @@ class PosteController extends Controller
      */
     public function create()
     {
+        $diplomes = Diplome::all();
+       // dd('diplomes', $diplomes);
         $postes=Poste::all();
         return view('postes.create', [
-            'postes'=>$postes
+            'postes'=>$postes,
+            'enterprises'=>Enterprise::all(),
+            'experiences'=>Experience::all(),
+            'diplomes'=>$diplomes,
         ]);
     }
 
@@ -49,11 +60,13 @@ class PosteController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $validated = $request->validate([
             'title'=>'required|max:100',
             'description'=>'required|max:255',
-            'experience'=>'required|max:50',
+            'experience_id'=>'required|max:50',
             'diplome'=>'required|max:50',
+            'enterprise_id'=>'required',
             ]);
         $request->user()->postes()->create($validated);
         return back()->with('message', ' le poste a bien été crée !');
@@ -71,6 +84,7 @@ class PosteController extends Controller
 
         return view('postes.show', [
             'poste'=>$poste,
+            'enterprises'=>Enterprise::all(),
         ]);
     }
 
@@ -82,7 +96,15 @@ class PosteController extends Controller
      */
     public function edit(Poste $poste)
     {
-        return view('postes.edit', compact('poste'));
+        return view('postes.edit', [
+            'poste'=>$poste,
+            'enterprises'=>Enterprise::all(),
+            'experiences'=>Experience::all(),
+            'postes'=>Poste::all(),
+            'diplomes'=>Diplome::all(),
+        ]);
+
+
     }
 
     /**
@@ -102,8 +124,8 @@ class PosteController extends Controller
         // ]);
         $poste->title=$request->title;
         $poste->description = $request->description;
-        $poste->experience = $request->experience;
-        $poste->diplome = $request->diplome;
+        $poste->experience_id = $request->experience;
+        $poste->diplome_id = $request->diplome;
         $poste->save();
         return back()->with('message', ' le poste a bien été mis à jour !');
     }

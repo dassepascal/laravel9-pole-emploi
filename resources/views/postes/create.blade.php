@@ -39,8 +39,9 @@
             <select name="experience"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option selected>Choose a experience</option>
-                @foreach ($postes as $poste )
-                <option value="{{ $poste->experience }}">{{ $poste->experience }}</option>
+                @foreach ($experiences as $experience )
+
+                <option value="{{ $experience->id }}">{{ $experience->experience }}</option>
                 @endforeach
             </select>
 
@@ -50,20 +51,20 @@
             <select name="diplome"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option selected>Choose a diplome</option>
-                @foreach ($postes as $poste )
-                <option value="{{ $poste->diplome }}">{{ $poste->diplome }}</option>
+                @foreach ($diplomes as $diplome )
+                <option value="{{ $diplome->id }}">{{ $diplome->diplome }}</option>
                 @endforeach
             </select>
             {{-- enterprise --}}
-            {{-- <label for="enterprise" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
-                an option</label> --}}
-            {{-- <select name="enterprise_id"
+            <label for="enterprise" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
+                an option</label>
+            <select name="enterprise_id"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option selected>Choose a enterprise</option>
-                @foreach ($postes as $poste )
-                <option value="{{ $poste->enterprise->id }}">{{ $poste->enterprise->name }}</option>
+                @foreach ($enterprises as $enterprise )
+                <option value="{{ $enterprise->id }}">{{ $enterprise->name }}</option>
                 @endforeach
-            </select> --}}
+            </select>
             {{-- button --}}
             <div class="flex items-center justify-end mt-4">
                 <x-button class="ml-3">
