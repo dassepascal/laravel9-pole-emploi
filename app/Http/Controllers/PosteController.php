@@ -8,6 +8,7 @@ use App\Models\Enterprise;
 use App\Models\Experience;
 use Illuminate\Http\Request;
 use App\Http\Requests\PosteRequest;
+use App\Models\Diplome;
 use Illuminate\Support\Facades\Validator;
 
 class PosteController extends Controller
@@ -36,12 +37,14 @@ class PosteController extends Controller
      */
     public function create()
     {
+        $diplomes = Diplome::all();
+       // dd('diplomes', $diplomes);
         $postes=Poste::all();
         return view('postes.create', [
             'postes'=>$postes,
             'enterprises'=>Enterprise::all(),
             'experiences'=>Experience::all(),
-            'diplomes'=>Poste::all(),
+            'diplomes'=>$diplomes,
         ]);
     }
 
