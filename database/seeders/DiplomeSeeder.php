@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Diplome;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DiplomeSeeder extends Seeder
 {
@@ -14,6 +15,13 @@ class DiplomeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $diplomes = [
+            'Bac','Bac+2','Bac+3','Bac+4','Bac+5'
+        ];
+        for($i=0; $i<count($diplomes); $i++){
+            Diplome::create([
+                'diplome' => $diplomes[$i],
+            ]);
+        }
     }
 }

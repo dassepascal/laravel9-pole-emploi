@@ -9,4 +9,8 @@ class Diplome extends Model
 {
     use HasFactory;
     protected $fillable = ['diplome'];
+    public function postes()
+    {
+        return $this->hasMany(Poste::class);
+    }
 }

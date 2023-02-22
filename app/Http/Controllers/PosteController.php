@@ -41,6 +41,7 @@ class PosteController extends Controller
             'postes'=>$postes,
             'enterprises'=>Enterprise::all(),
             'experiences'=>Experience::all(),
+            'diplomes'=>Poste::all(),
         ]);
     }
 

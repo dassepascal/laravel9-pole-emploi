@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('description');
             //$table->string('experience');
 
-            $table->string('diplome');
+          $table->foreignId('diplome_id')->constrained()->nullable();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('enterprise_id')->constrained()->nullable();
 
