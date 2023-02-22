@@ -44,5 +44,7 @@ class PosteTableSeeder extends Seeder
 //         ]);
 //     }
         // }
+
+        Poste::factory(10)->create();
     }
 }

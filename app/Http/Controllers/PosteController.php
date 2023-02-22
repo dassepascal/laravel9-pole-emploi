@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Poste;
 use App\Models\Enterprise;
+use App\Models\Experience;
 use Illuminate\Http\Request;
 use App\Http\Requests\PosteRequest;
 use Illuminate\Support\Facades\Validator;
@@ -54,7 +55,7 @@ class PosteController extends Controller
         $validated = $request->validate([
             'title'=>'required|max:100',
             'description'=>'required|max:255',
-            'experience'=>'required|max:50',
+            'experience_id'=>'required|max:50',
             'diplome'=>'required|max:50',
             'enterprise_id'=>'required',
             ]);
@@ -89,6 +90,7 @@ class PosteController extends Controller
         return view('postes.edit', [
             'poste'=>$poste,
             'enterprises'=>Enterprise::all(),
+            'experiences'=>Experience::all(),
             'postes'=>Poste::all(),
         ]);
 
@@ -112,7 +114,7 @@ class PosteController extends Controller
         // ]);
         $poste->title=$request->title;
         $poste->description = $request->description;
-        $poste->experience = $request->experience;
+        //$poste->experience = $request->experience;
         $poste->diplome = $request->diplome;
         $poste->save();
         return back()->with('message', ' le poste a bien été mis à jour !');
