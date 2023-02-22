@@ -19,9 +19,13 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         // User::factory(30)->create();
-        
-        User::factory(2)->create()->each(function($user) {
 
+        User::factory(2)->create()->each(function($user) {
+            $enterprises = Enterprise::all();
+            $user->postes()->saveMany(Poste::factory(10))->create([
+                'user_id' => $user->id,
+               'enterprise_id' => $enterprises->random()->id,
+            ]);
             $user->enterprises()->saveMany(Enterprise::factory(10)->create([
                 'user_id'=>$user->id,
             ]));
