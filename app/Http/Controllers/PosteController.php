@@ -97,6 +97,7 @@ class PosteController extends Controller
             'enterprises'=>Enterprise::all(),
             'experiences'=>Experience::all(),
             'postes'=>Poste::all(),
+            'diplomes'=>Diplome::all(),
         ]);
 
 
@@ -119,8 +120,8 @@ class PosteController extends Controller
         // ]);
         $poste->title=$request->title;
         $poste->description = $request->description;
-        //$poste->experience = $request->experience;
-        $poste->diplome = $request->diplome;
+        $poste->experience_id = $request->experience;
+        $poste->diplome_id = $request->diplome;
         $poste->save();
         return back()->with('message', ' le poste a bien été mis à jour !');
     }
