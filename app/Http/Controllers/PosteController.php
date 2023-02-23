@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Poste;
+use App\Models\Diplome;
 use App\Models\Enterprise;
 use App\Models\Experience;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\PosteRequest;
-use App\Models\Diplome;
 use Illuminate\Support\Facades\Validator;
+use Termwind\Components\Dd;
 
 class PosteController extends Controller
 {
@@ -20,8 +22,17 @@ class PosteController extends Controller
      */
     public function index()
     {
-        $postes = Poste::all();
-        $enterprises = Enterprise::all();
+        //$users = User::all();
+        //$postes = Poste::all();
+        //$postes = DB::table('postes');
+
+        // ->join('enterprises', 'postes.enterprise_id', '=', 'enterprises.id')
+        //  ->where ('postes.user_id', '=', auth()->user()->id)
+        // ->get();
+        //dd($postes);
+        $postes = DB::table('postes')->where('user_id', '=', auth()->user()->id)->get();
+        $enterprises= DB::table('enterprises')->where('user_id', '=', auth()->user()->id)->get();
+        //dd($enterprises[0]->name);
         return view('postes.index', [
             'postes'=>$postes,
             //  'postes'=>Poste::with('user')->latest()->get(),
@@ -36,12 +47,13 @@ class PosteController extends Controller
      */
     public function create()
     {
+        $enterprises= DB::table('enterprises')->where('user_id', '=', auth()->user()->id)->get();
         $diplomes = Diplome::all();
-       $experiences =Experience::all();
-        $postes=Poste::all();
+        $experiences =Experience::all();
+        $postes = DB::table('postes')->where('user_id', '=', auth()->user()->id)->get();
         return view('postes.create', [
             'postes'=>$postes,
-            'enterprises'=>Enterprise::all(),
+            'enterprises'=>$enterprises,
             'experiences'=>$experiences,
             'diplomes'=>$diplomes,
         ]);
@@ -98,8 +110,6 @@ class PosteController extends Controller
             'postes'=>Poste::all(),
             'diplomes'=>Diplome::all(),
         ]);
-
-
     }
 
     /**

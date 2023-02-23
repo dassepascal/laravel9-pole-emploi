@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('diplomes', function (Blueprint $table) {
             $table->id();
-            $table->string('diplome');
+            $table->string('label_diplome');
             $table->timestamps();
         });
     }

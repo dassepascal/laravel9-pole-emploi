@@ -9,6 +9,6 @@ class Experience extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'experience',
+        'label_experience',
     ];
 }

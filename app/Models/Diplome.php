@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Diplome extends Model
 {
     use HasFactory;
-    protected $fillable = ['diplome'];
+    protected $fillable = ['label_diplome'];
     public function postes()
     {
         return $this->hasMany(Poste::class);

@@ -20,9 +20,10 @@
         <form action="{{ route('postes.update', $poste->id) }}" method="post">
             @csrf
             @method('put')
-
+           
             <!-- Titre -->
             <div>
+
                 <x-label for="title" :value="__('Title')" />
 
                 <x-input id="title" class="block mt-1 w-full" type="text" name="title"

@@ -13,16 +13,16 @@
         <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Description')</h3>
         <p>{{ $poste->description }}</p>
         <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Experience')</h3>
-        <p>{{ $poste->experience }}</p>
+        <p>{{ $poste->experience->label_experience}}</p>
 
 
         <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Diplôme')</h3>
 
-        <p>{{ $poste->diplome }}</p>
+        <p>{{ $poste->diplome->label_diplome }}</p>
         {{-- enterprise --}}
         <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Enterprise')</h3>
         <a href="{{ route('enterprises.show',$poste->enterprise->id) }}">{{ $poste->enterprise->name }}</a>
-        
+
         <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Date creation')</h3>
         <p>{{ $poste->created_at->format('d/m/Y') }}</p>
         @if($poste->created_at != $poste->updated_at)

@@ -20,7 +20,7 @@ class DiplomeSeeder extends Seeder
         ];
         for($i=0; $i<count($diplomes); $i++){
             Diplome::create([
-                'diplome' => $diplomes[$i],
+                'label_diplome' => $diplomes[$i],
             ]);
         }
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Enterprise;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EnterpriseController extends Controller
 {
@@ -14,7 +15,8 @@ class EnterpriseController extends Controller
      */
     public function index()
     {
-        $enterprises = Enterprise::all();
+        //$enterprises = Enterprise::all();
+        $enterprises = DB::table('enterprises')->where('user_id', '=', auth()->user()->id)->get();
         return view('enterprises.index', compact('enterprises'));
     }
 
@@ -35,7 +37,7 @@ class EnterpriseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Enterprise $enterprise)
     {
         $validated = $request->validate([
             'name'=>'required|max:50',
@@ -56,6 +58,7 @@ class EnterpriseController extends Controller
      */
     public function show(Enterprise $enterprise)
     {
+        //$enterprise=DB::('enterprises')->where('id', '=', $enterprise->id)->get( );
         return view('enterprises.show', compact('enterprise'));
     }
 

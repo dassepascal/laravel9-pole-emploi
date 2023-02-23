@@ -20,7 +20,7 @@ class ExperienceSeeder extends Seeder
     ];
     for($i=0; $i<count($experiences); $i++){
         Experience::create([
-            'experience' => $experiences[$i],
+            'label_experience' => $experiences[$i],
         ]);
     }
     }
