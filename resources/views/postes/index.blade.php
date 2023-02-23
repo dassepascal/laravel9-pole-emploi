@@ -31,13 +31,13 @@
                         <tbody class="bg-white">
                             @foreach($postes as $poste)
 
-{{-- @dump($enterprises[0]->name) --}}
 
                             <tr class="whitespace-nowrap">
                                 <td class="px-4 py-4 text-sm text-gray-500">{{ $poste->id }}</td>
 
                                 {{-- <td class="px-4 py-4 text-sm text-gray-500">{{ $poste->enterprise->name }}</td> --}}
                                 <td class="px-4 py-4">{{ $poste->title }}</td>
+                                 {{-- <td class="px-4 py-4">{{ $poste->description }}</td> --}}
                                 {{-- @foreach ($enterprises as $enterprise )
                                 @dump($enterprise->name)
                                 <td class="px-4 py-4 text-sm text-gray-500">{{ $enterprise->name }}</td>
