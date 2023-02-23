@@ -37,12 +37,12 @@ class PosteController extends Controller
     public function create()
     {
         $diplomes = Diplome::all();
-       // dd('diplomes', $diplomes);
+       $experiences =Experience::all();
         $postes=Poste::all();
         return view('postes.create', [
             'postes'=>$postes,
             'enterprises'=>Enterprise::all(),
-            'experiences'=>Experience::all(),
+            'experiences'=>$experiences,
             'diplomes'=>$diplomes,
         ]);
     }
@@ -60,7 +60,7 @@ class PosteController extends Controller
             'title'=>'required|max:100',
             'description'=>'required|max:255',
             'experience_id'=>'required|max:50',
-            'diplome'=>'required|max:50',
+            'diplome_id'=>'required|max:50',
             'enterprise_id'=>'required',
             ]);
         $request->user()->postes()->create($validated);
@@ -119,8 +119,8 @@ class PosteController extends Controller
         // ]);
         $poste->title=$request->title;
         $poste->description = $request->description;
-        $poste->experience_id = $request->experience;
-        $poste->diplome_id = $request->diplome;
+        $poste->experience_id = $request->experience_id;
+        $poste->diplome_id = $request->diplome_id;
         $poste->save();
         return back()->with('message', ' le poste a bien été mis à jour !');
     }

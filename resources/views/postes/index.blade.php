@@ -1,9 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        {{-- <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            @Lang('Tasks List')
-        </h2> --}}
-        <h2> Poste</h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            @Lang('Postes List')
+        </h2>
+
     </x-slot>
     <div class="flex justify-center mx-auto">
         @if (session()->has('message'))
@@ -26,9 +26,6 @@
                                 <th class="px-2 py-2 text-xs text-gray-500">Id</th>
                                 <th class="px-2 py-2 text-xs text-gray-500">Nom du poste</th>
                                 <th class="px-2 py-2 text-xs text-gray-500">Nom de l'entreprise</th>
-                                {{-- <th class="px-2 py-2 text-xs text-gray-500">Description</th>
-                                <th class="px-2 py-2 text-xs text-gray-500">Expérience</th>
-                                <th class="px-2 py-2 text-xs text-gray-500">Diplôme</th> --}}
                             </tr>
                         </thead>
                         <tbody class="bg-white">
@@ -37,11 +34,7 @@
                                 <td class="px-4 py-4 text-sm text-gray-500">{{ $poste->id }}</td>
                                 <td class="px-4 py-4">{{ $poste->title }}</td>
                                 <td class="px-4 py-4">{{ $poste->enterprise->name }}</td>
-
-                                {{-- <td class="px-4 py-4">{{ $poste->entreprise->name }}</td>  --}}
-
                                 <td class="px-4 py-4">{{ $poste->enterprise->name }}</td>
-
                                 <x-link-button href="{{ route('postes.show',$poste->id) }}">
                                     @lang('Show')
                                 </x-link-button>

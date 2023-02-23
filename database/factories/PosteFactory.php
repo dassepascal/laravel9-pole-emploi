@@ -29,16 +29,7 @@ class PosteFactory extends Factory
             'experience_id'=>Experience::inRanDomOrder()->first()->id,
             'diplome_id'=>Diplome::inRanDomOrder()->first()->id,
             'user_id'=>User::factory()->create()->id,
-<<<<<<< HEAD
-<<<<<<< HEAD
-           //'enterprise_id'=>$this->faker->numberBetween($min =1, $max = 30),
-=======
-            'enterprise_id'=>$this->faker->numberBetween($min =1, $max = 30),
->>>>>>> code2
         ];
-=======
-           'enterprise_id'=>Enterprise::inRanDomOrder()->first()->id,
-         ];
->>>>>>> code4
+
     }
 }

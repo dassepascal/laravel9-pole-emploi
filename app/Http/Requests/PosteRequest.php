@@ -26,8 +26,8 @@ class PosteRequest extends FormRequest
         return [
             'title'=>'required|max:100',
             'description'=>'required|max:255',
-            'experience'=>'required|max:50',
-            'diplome'=>'requied|max:50',
+            'experience_id'=>'required|max:50',
+            'diplome_id'=>'requied|max:50',
             'enterprise_id'=>'required',
         ];
     }
