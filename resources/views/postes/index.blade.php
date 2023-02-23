@@ -16,6 +16,7 @@
           <!-- Message  -->
 
 
+
         <div class="flex flex-col">
             <div class="w-full">
                 <div class="border-b border-gray-200 shadow pt-6">
@@ -37,11 +38,13 @@
 
                                 {{-- <td class="px-4 py-4 text-sm text-gray-500">{{ $poste->enterprise->name }}</td> --}}
                                 <td class="px-4 py-4">{{ $poste->title }}</td>
+                                <td class="px-4 py-4">{{ $poste->enterprise_name }}</td>
                                  {{-- <td class="px-4 py-4">{{ $poste->description }}</td> --}}
                                 {{-- @foreach ($enterprises as $enterprise )
                                 @dump($enterprise->name)
                                 <td class="px-4 py-4 text-sm text-gray-500">{{ $enterprise->name }}</td>
                                 @endforeach --}}
+
                                                                {{-- <td class="px-4 py-4">{{ $enterprise->name }}</td> --}}
                                 <x-link-button href="{{ route('postes.show',$poste->id) }}">
                                     @lang('Show')
