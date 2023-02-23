@@ -22,21 +22,19 @@ class PosteController extends Controller
      */
     public function index()
     {
-        //$users = User::all();
-        //$postes = Poste::all();
-        //$postes = DB::table('postes');
 
-        // ->join('enterprises', 'postes.enterprise_id', '=', 'enterprises.id')
-        //  ->where ('postes.user_id', '=', auth()->user()->id)
-        // ->get();
-        //dd($postes);
-        $postes = DB::table('postes')->where('user_id', '=', auth()->user()->id)->get();
-        $enterprises= DB::table('enterprises')->where('user_id', '=', auth()->user()->id)->get();
+
+        $postes = DB::table('postes')
+        ->join('enterprises', 'postes.enterprise_id', '=', 'enterprises.id')
+
+        ->where('postes.user_id', '=', auth()->user()->id)
+        ->get();
+       // $enterprises= DB::table('enterprises')->where('user_id', '=', auth()->user()->id)->get();
         //dd($enterprises[0]->name);
         return view('postes.index', [
             'postes'=>$postes,
             //  'postes'=>Poste::with('user')->latest()->get(),
-             'enterprises'=>$enterprises
+             //'enterprises'=>$enterprises
         ]);
     }
 
