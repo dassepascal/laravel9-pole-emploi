@@ -22,22 +22,15 @@ class PosteController extends Controller
      */
     public function index()
     {
-        // $postes = DB::table('postes')
-        // ->join('enterprises', 'postes.enterprise_id', '=', 'enterprises.id')
-
-        // ->where('postes.user_id', '=', auth()->user()->id)
-        // ->get();
         $postes = DB::table('postes')
         ->join('enterprises', 'postes.enterprise_id', '=', 'enterprises.id')
         ->select('postes.*', 'enterprises.name as enterprise_name')
         ->where('postes.user_id', '=', auth()->user()->id)
         ->get();
-        //dd($postes);
-        //$enterprises = DB::table('enterprises')->where('user_id', '=', auth()->user()->id)->get();
-        //dd($enterprises);
+
         return view('postes.index', [
             'postes'=>$postes,
-            //'enterprises'=>$enterprises,
+
 
 
         ]);
@@ -54,6 +47,7 @@ class PosteController extends Controller
         $diplomes = Diplome::all();
         $experiences =Experience::all();
         $postes = DB::table('postes')->where('user_id', '=', auth()->user()->id)->get();
+
         return view('postes.create', [
             'postes'=>$postes,
             'enterprises'=>$enterprises,
@@ -106,12 +100,15 @@ class PosteController extends Controller
      */
     public function edit(Poste $poste)
     {
+        $diplomes = Diplome::all();
+        $experiences = Experience::all();
+        
         return view('postes.edit', [
             'poste'=>$poste,
             'enterprises'=>Enterprise::all(),
-            'experiences'=>Experience::all(),
+            'experiences'=>$experiences,
             'postes'=>Poste::all(),
-            'diplomes'=>Diplome::all(),
+            'diplomes'=>$diplomes,
         ]);
     }
 
