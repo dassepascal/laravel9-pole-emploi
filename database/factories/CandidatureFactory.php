@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Source;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,6 +22,7 @@ class CandidatureFactory extends Factory
             'lien'=>$this->faker->url(),
             'enterprise'=>$this->faker->company(),
             'user_id'=>$this->faker->numberBetween($min =1, $max = 30),
+            'source_id'=>Source::inRandomOrder()->first()->id,
         ];
     }
 }

@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('candidatures', function (Blueprint $table) {
+        Schema::create('sources', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('lien');
-            $table->string('enterprise');
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('source_id')->constrained();
+            $table->string('label_source');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('candidatures');
+        Schema::dropIfExists('sources');
     }
 };
