@@ -37,6 +37,16 @@
                     :value="old('lien', $candidature->lien)" required autofocus />
 
             </div>
+             {{-- Source --}}
+             <label for="source" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
+                an option</label>
+            <select name="source_id"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                @foreach ($sources as $source )
+                <option value="{{ $candidature->source_id}}"{{ $candidature->source_id === $source->id ? 'selected':'' }}>{{ $source->label_source }}</option>
+                @endforeach
+            </select>
             {{-- Enterprise --}}
             <div class="mt-4">
                 <x-label for="enterprise" :value="__('Enterprise')" />
@@ -45,6 +55,16 @@
                     :value="old('enterprise', $candidature->enterprise)" required autofocus />
 
             </div>
+              {{-- Advancement --}}
+              <label for="advancement" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
+                an option</label>
+            <select name="advancement_id"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                @foreach ($advancements as $advancement )
+                <option value="{{ $candidature->advancement_id}}"{{ $candidature->advancement_id === $advancement->id ? 'selected':'' }}>{{ $advancement->label_advancement }}</option>
+                @endforeach
+            </select>
 
             <div class="flex items-center justify-end mt-4">
                 <x-button class="ml-3">

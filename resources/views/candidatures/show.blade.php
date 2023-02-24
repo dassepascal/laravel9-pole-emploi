@@ -15,6 +15,8 @@
         <p>{{$candidature->source->label_source }}</p>
         <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Enterprise')</h3>
         <p>{{$candidature->enterprise }}</p>
+        <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Advancement')</h3>
+        <p>{{$candidature->advancement->label_advancement }}</p>
 
 
         @if($candidature->created_at !=$candidature->updated_at)

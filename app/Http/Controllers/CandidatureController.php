@@ -53,9 +53,9 @@ class CandidatureController extends Controller
     public function edit(Candidature $candidature)
     {
         // $candidature = Candidature::find($id);
-        // $advancements = Advancement::all();
+         $advancements = Advancement::all();
          $sources = Source::all();
-        return view('candidatures.edit', compact('candidature', 'sources'));
+        return view('candidatures.edit', compact('candidature', 'sources', 'advancements'));
     }
 
     public function update(Request $request, Candidature $candidature)
@@ -63,6 +63,8 @@ class CandidatureController extends Controller
         $candidature->name = $request->name;
         $candidature->lien = $request->lien;
         $candidature->enterprise = $request->enterprise;
+        $candidature->source_id = $request->source_id;
+        $candidature->advancement_id = $request->advancement_id;
         $candidature->save();
         return back()->with('message', ' la candidature a bien été modifiée !');
     }
