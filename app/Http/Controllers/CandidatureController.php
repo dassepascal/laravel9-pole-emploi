@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Source;
+use App\Models\Advancement;
 use App\Models\Candidature;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,12 +21,13 @@ class CandidatureController extends Controller
 
     public function create()
     {
-        // $advancements = Advancement::all();
+         $advancements = Advancement::all();
          $sources = Source::all();
         $candidatures = DB::table('candidatures')->where('user_id', '=', auth()->user()->id)->get();
         return view('candidatures.create', [
             'candidatures'=>$candidatures,
             'sources'=>$sources,
+            'advancements'=>$advancements,
         ]);
     }
 
@@ -36,6 +38,7 @@ class CandidatureController extends Controller
             'lien'=>'required|max:150',
             'source_id'=>'required|max:50',
             'enterprise'=>'required|max:50',
+            'advancement_id'=>'required|max:50',
         ]);
         $request->user()->candidatures()->create($validated);
         return back()->with('message', ' la candidature a bien été crée !');
