@@ -46,6 +46,16 @@
                         {{ __('Contacts') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('candidatures.create')" :active="request()->routeIs('candidature')">
+                        {{ __('Candidature') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('candidatures.index')" :active="request()->routeIs('candidatures')">
+                        {{ __('Candidatures') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

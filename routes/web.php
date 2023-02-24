@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\CandidatureController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PosteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EnterpriseController;
+use App\Models\Candidature;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +38,4 @@ require __DIR__.'/auth.php';
 Route::resource('postes',PosteController::class)->middleware('auth');
 Route::resource('enterprises',EnterpriseController::class)->middleware('auth');
 Route::resource('contacts',ContactController::class)->middleware('auth');
+Route::resource('candidatures',CandidatureController::class)->middleware('auth');

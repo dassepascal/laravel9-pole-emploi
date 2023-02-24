@@ -45,14 +45,7 @@ class ContactController extends Controller
             'email'=>'required|max:50',
             'jobTitle'=>'required|max:50',
         ]);
-        // $contact = new Contact();
-        // $contact->name=$request->name;
-        // $contact->firstName = $request->firstName;
-        // $contact->phone = $request->phone;
-        // $contact->email = $request->email;
-        // $contact->jobTitle = $request->jobTitle;
-
-        // $contact->save();
+       
          $request->user()->contacts()->create($validated);
 
         return back()->with('message', ' le contact a bien été crée !');

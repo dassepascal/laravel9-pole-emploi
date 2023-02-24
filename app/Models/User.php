@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Models\Poste;
 use App\Models\Contact;
 use App\Models\Enterprise;
+use App\Models\Candidature;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -53,5 +54,8 @@ class User extends Authenticatable
     }
     public function contacts(){
         return $this->hasMany(Contact::class);
+    }
+    public function candidatures(){
+        return $this->hasMany(Candidature::class);
     }
 }

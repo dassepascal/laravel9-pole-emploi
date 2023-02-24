@@ -26,4 +26,5 @@ class Poste extends Model
     {
         return $this->belongsTo((Diplome::class));
     }
+    
 }
