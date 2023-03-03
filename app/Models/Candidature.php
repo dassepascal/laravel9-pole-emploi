@@ -13,7 +13,7 @@ class Candidature extends Model
     protected $fillable = [
         'name',
         'lien',
-        'enterprise',
+        'enterprise_id',
         'user_id',
         'source_id',
         'advancement_id'
@@ -27,5 +27,9 @@ class Candidature extends Model
     public function advancement()
     {
         return $this->belongsTo(Advancement::class);
+    }
+    public function enterprise()
+    {
+        return $this->belongsTo(Enterprise::class);
     }
 }

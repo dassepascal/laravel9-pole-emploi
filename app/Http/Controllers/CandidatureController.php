@@ -13,21 +13,32 @@ class CandidatureController extends Controller
     public function index()
     {
         $candidatures = DB::table('candidatures')
-    ->where('user_id', '=', auth()->user()->id)
-    ->get();
+        ->join('enterprises', 'candidatures.enterprise_id', '=', 'enterprises.id')
+        ->select('candidatures.*','enterprises.name as enterprise_name' )
+        ->where('candidatures.user_id', '=', auth()->user()->id)
 
-        return view('candidatures.index', compact('candidatures'));
+        ->get();
+
+        // $candidatures = DB::table('candidatures')
+        //     ->where('user_id', '=', auth()->user()->id)
+        //     ->get();
+
+        return view('candidatures.index',[
+            'candidatures'=>$candidatures,
+        ]);
     }
 
     public function create()
     {
-         $advancements = Advancement::all();
-         $sources = Source::all();
+        $enterprises = DB::table('enterprises')->where('user_id', '=', auth()->user()->id)->get();
+        $advancements = Advancement::all();
+        $sources = Source::all();
         $candidatures = DB::table('candidatures')->where('user_id', '=', auth()->user()->id)->get();
         return view('candidatures.create', [
             'candidatures'=>$candidatures,
             'sources'=>$sources,
             'advancements'=>$advancements,
+            'enterprises'=>$enterprises,
         ]);
     }
 
@@ -37,7 +48,7 @@ class CandidatureController extends Controller
             'name'=>'required|max:50',
             'lien'=>'required|max:150',
             'source_id'=>'required|max:50',
-            'enterprise'=>'required|max:50',
+            'enterprise_id'=>'required|max:50',
             'advancement_id'=>'required|max:50',
         ]);
         $request->user()->candidatures()->create($validated);
@@ -53,8 +64,8 @@ class CandidatureController extends Controller
     public function edit(Candidature $candidature)
     {
         // $candidature = Candidature::find($id);
-         $advancements = Advancement::all();
-         $sources = Source::all();
+        $advancements = Advancement::all();
+        $sources = Source::all();
         return view('candidatures.edit', compact('candidature', 'sources', 'advancements'));
     }
 
@@ -71,8 +82,7 @@ class CandidatureController extends Controller
 
     public function destroy(Candidature $candidature)
     {
-
-         $candidature->delete();
-         return redirect()->route('candidatures.index')->with('message', ' la candidature a bien été supprimée !');
+        $candidature->delete();
+        return redirect()->route('candidatures.index')->with('message', ' la candidature a bien été supprimée !');
     }
 }

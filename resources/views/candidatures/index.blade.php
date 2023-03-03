@@ -5,7 +5,7 @@
         </h2>
 
     </x-slot>
-    
+
 
     <div class="flex justify-center mx-auto">
         @if (session()->has('message'))
@@ -30,10 +30,11 @@
                         </thead>
                         <tbody class="bg-white">
                             @foreach($candidatures as $candidature)
+
                             <tr class="whitespace-nowrap">
                                 <td class="px-4 py-4">{{ $candidature->name }}</td>
                                 <td class="px-4 py-4">{{ $candidature->lien }}</td>
-                                <td class="px-4 py-4">{{ $candidature->enterprise }}</td>
+                                <td class="px-4 py-4">{{ $candidature->enterprise_name }}</td>
 
                                 <x-link-button href="{{ route('candidatures.show',$candidature->id) }}">
                                     @lang('Show')

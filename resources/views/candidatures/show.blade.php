@@ -13,8 +13,9 @@
         <p>{{$candidature->lien }}</p>
         <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Source')</h3>
         <p>{{$candidature->source->label_source }}</p>
+        {{-- enterprise --}}
         <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Enterprise')</h3>
-        <p>{{$candidature->enterprise }}</p>
+        <p> <a href="{{route('enterprises.show',$candidature->enterprise->id) }}">{{$candidature->enterprise->name }}</a></p>
         <h3 class="font-semibold text-xl text-gray-800 pt-2">@lang('Advancement')</h3>
         <p>{{$candidature->advancement->label_advancement }}</p>
 
